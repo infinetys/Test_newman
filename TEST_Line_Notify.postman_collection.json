@@ -1,0 +1,324 @@
+{
+	"info": {
+		"_postman_id": "c98ef62d-121a-4a1d-b60f-7a47aafb74d5",
+		"name": "TEST Line Notify",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "001 - Line Notify Login",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0772b607-6c89-4282-9766-a33a91bc7686",
+						"exec": [
+							"pm.globals.set(\"token\", \"p7xgIBeyWOq9cG4T6iO4aazhjjA0oKDyinnn772MLTz\");",
+							"",
+							"pm.environment.set(\"token\", \"p7xgIBeyWOq9cG4T6iO4aazhjjA0oKDyinnn772MLTz\");",
+							"",
+							"",
+							"pm.environment.set(\"message\", getRandomBoardName());",
+							"",
+							"function getRandomBoardName() {",
+							"    ",
+							"    const boardname = \"เลขที่ออก  \" + parseInt(Math.random() * 10000);",
+							"    // console.log(boardname);",
+							"    return boardname;",
+							"    ",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "38582544-3e47-4aae-81fe-4f3d8fa48c8c",
+						"exec": [
+							"pm.environment.unset(\"token\");",
+							"pm.globals.unset(\"token\");",
+							"",
+							"",
+							"//if else",
+							"// pm.test(\"Status code is 200\", function () {",
+							"//     pm.response.to.have.status(200);",
+							"// });",
+							"",
+							"// if (responseCode.code !== 200) {",
+							"    ",
+							"//     postman.setNextRequest(\"004 - Line Notify User info\");",
+							"    ",
+							"// } ",
+							"// else {",
+							"    ",
+							"//     postman.setNextRequest(\"003 - Line Notify Register\");",
+							"    ",
+							"// }",
+							"",
+							"",
+							"// Send request",
+							"// if(responseCode.code === 200){",
+							"    ",
+							"//     pm.sendRequest({",
+							"//     url: \"https://notify-api.line.me/api/notify\",",
+							"//     method: 'POST',",
+							"//     header: {",
+							"//         'content-Type': 'multipart/form-data',",
+							"//         \"accept\" : \"multipart/form-data\",",
+							"//         \"authorization\" :\"Bearer p7xgIBeyWOq9cG4T6iO4aazhjjA0oKDyinnn772MLTz\",",
+							"//           },",
+							"//       body: {",
+							"//           mode: 'formdata',",
+							"//           formdata: [",
+							"//             {key: \"message\", value: \"009 - login PASS\", disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+							"//         ]",
+							"//       }",
+							"// },  function(err, response) {",
+							"//   const jsonResponse = response.json();",
+							"// });",
+							"    ",
+							"// } else {",
+							"    ",
+							"//     pm.sendRequest({",
+							"//     url: \"https://notify-api.line.me/api/notify\",",
+							"//     method: 'POST',",
+							"//     header: {",
+							"//         'content-Type': 'multipart/form-data',",
+							"//         \"accept\" : \"multipart/form-data\",",
+							"//         \"authorization\" :\"Bearer p7xgIBeyWOq9cG4T6iO4aazhjjA0oKDyinnn772MLTz\",",
+							"//           },",
+							"//       body: {",
+							"//           mode: 'formdata',",
+							"//           formdata: [",
+							"//             {key: \"message\", value: \"009 - login FAIL\", disabled: false, description: {content:\"\", type:\"text/plain\"}}",
+							"            ",
+							"//         ]",
+							"//       }",
+							"// },  function(err, response) {",
+							"//   const jsonResponse = response.json();",
+							"// });",
+							"// }",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "message",
+							"value": "{{message}}",
+							"type": "text"
+						},
+						{
+							"key": "stickerId",
+							"value": "13",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "stickerPackageId",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://notify-api.line.me/api/notify",
+					"protocol": "https",
+					"host": [
+						"notify-api",
+						"line",
+						"me"
+					],
+					"path": [
+						"api",
+						"notify"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "004 - Line Notify User info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e7d33a81-8ca5-4da9-ac4c-2e32e0b592ee",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "64b0008c-ba97-4bcb-aec9-11d64f77172a",
+						"exec": [
+							"pm.globals.set(\"token\", \"p7xgIBeyWOq9cG4T6iO4aazhjjA0oKDyinnn772MLTz\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "message",
+							"value": "เรียก User info",
+							"type": "text"
+						},
+						{
+							"key": "stickerId",
+							"value": "13",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "stickerPackageId",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://notify-api.line.me/api/notify",
+					"protocol": "https",
+					"host": [
+						"notify-api",
+						"line",
+						"me"
+					],
+					"path": [
+						"api",
+						"notify"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "003 - Line Notify Register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e7d33a81-8ca5-4da9-ac4c-2e32e0b592ee",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "64b0008c-ba97-4bcb-aec9-11d64f77172a",
+						"exec": [
+							"pm.globals.set(\"token\", \"p7xgIBeyWOq9cG4T6iO4aazhjjA0oKDyinnn772MLTz\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "message",
+							"value": "กำลัง Register",
+							"type": "text"
+						},
+						{
+							"key": "stickerId",
+							"value": "13",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "stickerPackageId",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://notify-api.line.me/api/notify",
+					"protocol": "https",
+					"host": [
+						"notify-api",
+						"line",
+						"me"
+					],
+					"path": [
+						"api",
+						"notify"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
